@@ -1,0 +1,75 @@
+$ git --version
+$ git config --global user.name 'Paula Iuga'
+$ git config --global user.email 'paula.iuga@s.unibuc.ro'
+--fara ele de mai sus nu se pot face schimbari
+$ cd --intram in folderul unde lucram
+$ ls
+$ git init
+$ls -a1 sau al -- pt a vedea ce e hidden
+$ touch .gitignore
+$ touch README.md
+$ git status -- ce se intampla in mediul de lucru
+--untracked nu sunt monotorizite
+$ git add . --pune in staging area fisierele care fac parte din proiectul nostru
+$ git status
+$ echo README.md > gitignore -- nu se mai pune in proiect readme
+$ cat gitignore
+$ git status
+--un fisier modificat de la ultima comanda de git
+$ git add .
+$ touch program.c
+$ git status
+--se pune cod in fisierul creat cu notepad++
+$ git add .
+$ git status
+$ git commit -m 'primul commit al mesajului' -m 'un proiect simplu de test'
+-- -m mesaj/descriere
+-- se creeaza un comit in repository ul local
+$ git log
+--se modifica cv la program.c
+$ git diff
+--diferentele dintre fisierul din folder care nu sunt in staging area
+$ git add .
+$ git commit -m 'am adaugat un header in fisier'
+--adaug modificarile in repository
+$ git log -- versiunile de program date cu commit prima e ultima vers la care lucuram
+$ gitk -- un log unde deschide o interfata grafica cu verde si + s-au adaugat liniile noi
+
+commit d4..
+--in dir .git/objects se gs un folder d4 cu acel commit
+--toate fisierele sunt comprimate cu zip nu se vad la un simplu $ cat
+-- 40 caractere Hexa face referire la un fisier\ commit
+-- SHA hash altul pt orice schimbare
+
+$ git branch -a -- ce branchuri avem
+--doar master pr la care lucram
+$ git branch improve_perf
+$ git branch better_input
+$ git branch -a
+$ git status -- la fel totul
+$ git checkout better_input -- se duce pe acest branch
+$ touch read_file.c
+$ touch write_file.c
+--se modifica si program.c
+$ git add . --se ad in staging area si read_file si write_file
+$ git commit -m 'adaugare citire scriere fisier'
+$ git checkout 'master'
+--fisierele dispar din folder au fost facute pe alt branch
+$ git merge better_input -- se pune ce e in brancul better_input in master
+https://www.toptal.com/developers/gitignore --genereaza un gitignore pt fiecare tip de limnaj ales
+
+
+--sa mutam continutul proiectului pe unremote repository in online github
+-- pe github se creeaza un nou repository gol
+-- linkul pt repository - quick setup
+$ git remote add origin https://linkul
+$ git push -u origin master -- pe repository se pune tot ce era local inainte
+--acum proiectul este online
+-- modificam online README.md  si commit
+--modiifcarile sunt doar pe github si nu le avem local
+$ git pull linkul
+--avem modificarile si online
+$ cat README.md
+-- se modica ssh keys pt a nu cere username si parola cand modificam luam de pe repository
+$ git clone link de copiat -- repositoriul e un fork al unui repository existent
+--pull e fetch + merge cu ce e local
